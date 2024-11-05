@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisClone", "RedisClone\RedisClone.csproj", "{446B7C70-E4E9-486C-B011-41E30300B480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisClone.Tests", "RedisClone.Tests\RedisClone.Tests.csproj", "{FE523789-C50F-49C0-BB3D-0946F794D128}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{446B7C70-E4E9-486C-B011-41E30300B480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{446B7C70-E4E9-486C-B011-41E30300B480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{446B7C70-E4E9-486C-B011-41E30300B480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{446B7C70-E4E9-486C-B011-41E30300B480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE523789-C50F-49C0-BB3D-0946F794D128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE523789-C50F-49C0-BB3D-0946F794D128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE523789-C50F-49C0-BB3D-0946F794D128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE523789-C50F-49C0-BB3D-0946F794D128}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
