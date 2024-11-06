@@ -1,14 +1,9 @@
-namespace RedisClone.Services;
+namespace RedisClone.Services.Serialization;
 
-public class SerializationService
+public class SerializationServiceFactory
 {
-    public object Deserialize(char[] bytes, int start)
+    public static ISerializationService GetSerializationService(char type)
     {
-        char type = bytes[start];
-        if(!bytes[^2].Equals('\r') || !bytes[^1].Equals('\n'))
-        {
-            throw new ArgumentException("Invalid format");
-        }
         ISerializationService serializationService;
         switch (type)
         {
@@ -36,35 +31,28 @@ public class SerializationService
                 throw new NotSupportedException("Operation not supported");
         }
 
-        return serializationService.Deserialize(bytes, start);
+        return serializationService;
     }
-    public object Deserialize(char[] bytes)
+    
+    public static ISerializationService GetSerializationService(object obj)
     {
-        char type = bytes[0];
-        if(!bytes[^2].Equals('\r') || !bytes[^1].Equals('\n'))
-        {
-            throw new ArgumentException("Invalid format");
-        }
         ISerializationService serializationService;
-        switch (type)
+        switch (obj)
         {
-            case '+':
+            // TODO: Add serialization for bulk string and null
+            case string _:
                 serializationService = new SimpleStringSerializationService();
                 break;
             
-            case '$':
-                serializationService = new BulkStringSerializationService();
-                break;
-            
-            case ':':
+            case int _:
                 serializationService = new IntegerSerializationService();
                 break;
             
-            case '-':
+            case Exception _:
                 serializationService = new ExceptionSerializationService();
                 break;
             
-            case '*':
+            case string[] _:
                 serializationService = new ArraySerializationService();
                 break;
             
@@ -72,11 +60,6 @@ public class SerializationService
                 throw new NotSupportedException("Operation not supported");
         }
 
-        return serializationService.Deserialize(bytes);
-    }
-
-    public char[] Serialize(object obj)
-    {
-        throw new NotImplementedException();
+        return serializationService;
     }
 }
