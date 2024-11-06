@@ -32,7 +32,7 @@ public class ArraySerializationService : ISerializationService
         return result;
     }
 
-    public Stream Serialize(object obj)
+    public byte[] Serialize(object obj)
     {
         throw new NotImplementedException();
     }

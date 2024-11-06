@@ -24,7 +24,7 @@ public class IntegerSerializationService : ISerializationService
         throw new ArgumentException("Invalid format");
     }
 
-    public Stream Serialize(object obj)
+    public byte[] Serialize(object obj)
     {
         throw new NotImplementedException();
     }

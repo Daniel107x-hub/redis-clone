@@ -32,7 +32,7 @@ public class BulkStringSerializationService : ISerializationService
         return sb.ToString();
     }
 
-    public Stream Serialize(object obj)
+    public byte[] Serialize(object obj)
     {
         throw new NotImplementedException();
     }
