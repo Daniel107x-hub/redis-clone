@@ -34,7 +34,7 @@ public class BulkStringSerializationService : ISerializationService
 
     public byte[] Serialize(object obj)
     {
-        if(obj == null) return Encoding.ASCII.GetBytes("-1\r\n");
+        if(obj == null) return Encoding.ASCII.GetBytes("$-1\r\n");
         if(!(obj is string)) throw new ArgumentException("Invalid type");
         string str = obj.ToString();
         return Encoding.ASCII.GetBytes($"${str.Length}\r\n{str}\r\n");
