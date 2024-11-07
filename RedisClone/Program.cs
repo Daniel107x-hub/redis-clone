@@ -66,6 +66,10 @@ namespace RedisClone
                     dictionary.TryGetValue(key, out object value);
                     response = value;
                 }
+                else
+                {
+                    response = "";
+                }
                 // Send response
                 ISerializationService serializationService = SerializationServiceFactory.GetSerializationService(response);
                 byte[] responseData = serializationService.Serialize(response);
