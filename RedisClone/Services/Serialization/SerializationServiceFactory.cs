@@ -58,7 +58,7 @@ public class SerializationServiceFactory
                 serializationService = new ExceptionSerializationService();
                 break;
             
-            case string[] _:
+            case List<object> _:
                 serializationService = new ArraySerializationService();
                 break;
             
