@@ -6,6 +6,7 @@ namespace RedisClone
 {
     class Program
     {
+        private static Dictionary<string, object> dictionary = new();
         static void Main(string[] args)
         {
             IPAddress address = IPAddress.Any;
@@ -53,8 +54,18 @@ namespace RedisClone
                 }else if (command.Equals("ECHO"))
                 {
                     response = args[0];
+                }else if (command.Equals("SET"))
+                {
+                    string key = (string)args[0];
+                    object value = args[1];
+                    dictionary[key] = value;
+                    response = "OK";
+                }else if (command.Equals("GET"))
+                {
+                    string key = (string)args[0];
+                    dictionary.TryGetValue(key, out object value);
+                    response = value;
                 }
-                
                 // Send response
                 ISerializationService serializationService = SerializationServiceFactory.GetSerializationService(response);
                 byte[] responseData = serializationService.Serialize(response);
