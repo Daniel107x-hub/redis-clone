@@ -1,5 +1,6 @@
 using System.Net;
 using System.Net.Sockets;
+using Microsoft.Extensions.Logging;
 using RedisClone.Services.Serialization;
 
 namespace RedisClone;
@@ -14,11 +15,15 @@ public class AsyncRedisServer
     private int _totalGetRequests;
     private int _totalConfigRequests;
     private int _totalUnrecognizedRequests;
+    private ILogger _logger;
     
     public AsyncRedisServer()
     {
         _tcpListener = new TcpListener(IPAddress.Any, Port);
         _dictionary = new();
+        using ILoggerFactory factory = LoggerFactory.Create(builder => builder.AddConsole());
+        _logger = factory.CreateLogger("Redis Lite Server");
+        _logger.LogInformation("Logging is set up and ready");
     }
 
     public async Task StartAsync()
@@ -26,18 +31,18 @@ public class AsyncRedisServer
         try
         {
             _tcpListener.Start();
-            Console.WriteLine($"Server started on port {Port}");
+            _logger.LogInformation("Server started");
             while (true)
             {
                 TcpClient client = await _tcpListener.AcceptTcpClientAsync();
-                Console.WriteLine("Client connected");
+                _logger.LogTrace("Client connected");
                 _clients++;
                 _ = HandleClientAsync(client);
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error: {e.Message}");
+            _logger.LogError($"Error: {e.Message}");
         }
         finally
         {
@@ -55,17 +60,17 @@ public class AsyncRedisServer
             while (streamReader.Peek() != -1)
             {
                 // Process request
-                Console.WriteLine("New request received");
+                _logger.LogTrace("New request received");
                 byte[] response = await Task.Run(() => ProcessRequest(streamReader));
                 // Send response
                 stream.Write(response, 0, response.Length);
-                Console.WriteLine("Response sent");
+                _logger.LogTrace("Response sent");
             }
-            Console.WriteLine(PrintMetrics());
+            _logger.LogInformation(PrintMetrics());
         }
         catch (Exception e)
         {
-            Console.WriteLine($"Error: {e.Message}");
+            _logger.LogError($"Error: {e.Message}");
         }
         finally
         {
