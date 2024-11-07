@@ -26,6 +26,7 @@ public class IntegerSerializationService : ISerializationService
 
     public byte[] Serialize(object obj)
     {
-        throw new NotImplementedException();
+        if(!(obj is int)) throw new ArgumentException("Invalid type");
+        return Encoding.ASCII.GetBytes($":{obj}\r\n");
     }
 }

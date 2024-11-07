@@ -39,9 +39,15 @@ public class SerializationServiceFactory
         ISerializationService serializationService;
         switch (obj)
         {
-            // TODO: Add serialization for bulk string and null
+            case null:
+                serializationService = new BulkStringSerializationService();
+                break;
+            
             case string _:
-                serializationService = new SimpleStringSerializationService();
+                string message = (string)obj;
+                if (message.Contains('\r') || message.Contains('\n') || message.Contains('\\'))
+                    serializationService = new BulkStringSerializationService();
+                else serializationService = new SimpleStringSerializationService();
                 break;
             
             case int _:

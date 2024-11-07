@@ -5,6 +5,24 @@ namespace RedisClone.Tests.Services.Serialization;
 
 public class IntegerSerializationServiceTests 
 {
+    
+    [Fact]
+    public void Serialize_WhenCalledWithInteger_ReturnsBytes()
+    {
+        IntegerSerializationService integerSerializationService = new();
+        int input = 1000;
+        byte[] expected = Encoding.ASCII.GetBytes(":1000\r\n");
+        var result = integerSerializationService.Serialize(input);
+        Assert.Equal(expected, result);
+    }
+    
+    [Fact]
+    public void Serialize_WhenCalledWithInvalidType_ThrowsArgumentException()
+    {
+        IntegerSerializationService integerSerializationService = new();
+        Assert.Throws<ArgumentException>(() => integerSerializationService.Serialize("1000"));
+    }
+    
     [Theory]
     [InlineData("10000\r\n", 10000)]
     [InlineData("1000\r\n", 1000)]

@@ -74,4 +74,27 @@ public class BulkStringSerializationServiceTests
         using StreamReader reader = new(stream);
         Assert.Equal(uid, service.Deserialize(reader));
     }
+    
+    [Fact]
+    public void Serialize_WhenCalledWithNull_ReturnsNull()
+    {
+        BulkStringSerializationService service = new();
+        byte[] result = service.Serialize(null);
+        Assert.Equal(Encoding.ASCII.GetBytes("-1\r\n"), result);
+    }
+    
+    [Fact]
+    public void Serialize_WhenCalledWithInvalidType_ThrowsArgumentException()
+    {
+        BulkStringSerializationService service = new();
+        Assert.Throws<ArgumentException>(() => service.Serialize(1));
+    }
+    
+    [Fact]
+    public void Serialize_WhenCalledWithString_SerializesString()
+    {
+        BulkStringSerializationService service = new();
+        byte[] result = service.Serialize("hello");
+        Assert.Equal(Encoding.ASCII.GetBytes("$5\r\nhello\r\n"), result);
+    }
 }

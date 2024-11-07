@@ -21,6 +21,9 @@ public class SimpleStringSerializationService : ISerializationService
 
     public byte[] Serialize(object obj)
     {
-        throw new NotImplementedException();
+        if(!(obj is string)) throw new ArgumentException("Invalid type");
+        string str = (string)obj;
+        if(str.Contains('\r') || str.Contains('\n')) throw new ArgumentException("Invalid format");
+        return Encoding.ASCII.GetBytes($"+{str}\r\n");
     }
 }

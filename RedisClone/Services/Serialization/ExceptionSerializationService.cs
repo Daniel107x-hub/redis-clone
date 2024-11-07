@@ -21,6 +21,8 @@ public class ExceptionSerializationService : ISerializationService
 
     public byte[] Serialize(object obj)
     {
-        throw new NotImplementedException();
+        if (!(obj is Exception)) throw new ArgumentException("Invalid type");
+        Exception exception = (Exception)obj;
+        return Encoding.ASCII.GetBytes($"-{exception.Message}\r\n");
     }
 }

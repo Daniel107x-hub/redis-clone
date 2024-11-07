@@ -6,6 +6,23 @@ namespace RedisClone.Tests.Services.Serialization;
 public class ExceptionSerializationServiceTests
 {
     [Fact]
+    public void Serialize_WhenCalledWithException_ReturnsBytes()
+    {
+        ExceptionSerializationService serializationService = new();
+        Exception input = new("ERR unknown command 'foobar'");
+        byte[] expected = Encoding.ASCII.GetBytes("-ERR unknown command 'foobar'\r\n");
+        var result = serializationService.Serialize(input);
+        Assert.Equal(expected, result);
+    }
+    
+    [Fact]
+    public void Serialize_WhenCalledWithInvalidType_ThrowsArgumentException()
+    {
+        ExceptionSerializationService serializationService = new();
+        Assert.Throws<ArgumentException>(() => serializationService.Serialize("ERR unknown command 'foobar'"));
+    }
+    
+    [Fact]
     public void Deserialize_WhenCalledWithValidError_ReturnsException()
     {
         string input = "ERR unknown command 'foobar'\r\n";

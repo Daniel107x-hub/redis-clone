@@ -34,6 +34,17 @@ public class ArraySerializationService : ISerializationService
 
     public byte[] Serialize(object obj)
     {
-        throw new NotImplementedException();
+        List<byte> bytes = new();
+        if(obj == null) throw new ArgumentNullException(nameof(obj));
+        if(!(obj is List<object>)) throw new ArgumentException("Invalid format");
+        List<object> list = (List<object>)obj;
+        bytes.AddRange(Encoding.ASCII.GetBytes($"*{list.Count}\r\n"));
+        foreach (var item in list)
+        {
+            ISerializationService service = SerializationServiceFactory.GetSerializationService(item);
+            byte[] itemBytes = service.Serialize(item);
+            bytes.AddRange(itemBytes);
+        }
+        return bytes.ToArray();
     }
 }
