@@ -34,7 +34,7 @@ public class SerializationServiceFactory
         return serializationService;
     }
     
-    public static ISerializationService GetSerializationService(object obj)
+    public static ISerializationService GetSerializationService(object? obj)
     {
         ISerializationService serializationService;
         switch (obj)

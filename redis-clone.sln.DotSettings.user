@@ -15,5 +15,6 @@
     &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ExceptionSerializationServiceTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.IntegerSerializationServiceTests&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ArraySerializationServiceTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SerializationServiceFactoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
