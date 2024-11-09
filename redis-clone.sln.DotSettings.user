@@ -1,20 +1,27 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=027eaa4b_002Db81a_002D403f_002D8fd0_002D6d22400d36a5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Deserialize_WhenCalledWithValidString_ReturnsString" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SimpleStringSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.BulkStringSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ExceptionSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.IntegerSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ArraySerializationServiceTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=027eaa4b_002Db81a_002D403f_002D8fd0_002D6d22400d36a5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Deserialize_WhenCalledWithValidString_ReturnsString" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SimpleStringSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.BulkStringSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ExceptionSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.IntegerSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ArraySerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenPingCommand_ReturnsPong&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenSetCommandWithNoArguments_ReturnsException&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenSetCommandWithArguments_ReturnsOk&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenGetCommandWithStoredKey_ReturnsValue&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenGetCommandWithNotStoredKey_ReturnsNull&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_OnSubsequentSetCommandForSameKeyAndGet_ReturnsLatest&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0b8c33be_002De854_002D4036_002Da923_002Dc00850725d30/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SimpleStringSerializationServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SimpleStringSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.BulkStringSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ExceptionSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.IntegerSerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ArraySerializationServiceTests&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SerializationServiceFactoryTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0b8c33be_002De854_002D4036_002Da923_002Dc00850725d30/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SimpleStringSerializationServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SimpleStringSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.BulkStringSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ExceptionSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.IntegerSerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.ArraySerializationServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Serialization.SerializationServiceFactoryTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::FE523789-C50F-49C0-BB3D-0946F794D128::net8.0::RedisClone.Tests.Services.Core.RedisCommandProcessorTests.ProcessCommand_WhenPingCommand_ReturnsPong&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
