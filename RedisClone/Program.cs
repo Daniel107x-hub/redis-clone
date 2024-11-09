@@ -1,10 +1,13 @@
-﻿namespace RedisClone
+﻿using RedisClone.Services.Core;
+
+namespace RedisClone
 {
     class Program
     {
         static void Main(string[] args)
         {
-            AsyncRedisServer server = new();
+            IProcessor commandProcessor = new RedisCommandProcessor();
+            AsyncRedisServer server = new(commandProcessor);
             server.StartAsync().Wait();
         }
     }
