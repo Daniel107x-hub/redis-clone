@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using RedisClone.Services.Time;
 
 namespace RedisClone.Services.Core;
 
@@ -6,6 +7,12 @@ public class RedisCommandProcessor : IProcessor
 {
     private readonly ConcurrentDictionary<string, object> _dictionary = new();
     private readonly ConcurrentDictionary<string, long> _expirationDictionary = new();
+    private readonly ITimeProvider _timeProvider;
+    
+    public RedisCommandProcessor(ITimeProvider timeProvider)
+    {
+        _timeProvider = timeProvider;
+    }
     
     public object? ProcessCommand(string command, List<object> args)
     {
@@ -31,20 +38,20 @@ public class RedisCommandProcessor : IProcessor
                     var success = long.TryParse(offsetObject.ToString(), out var offset);
                     if (!success) return new ArgumentException("Invalid value for EXP argument");
                     var timeSpan = TimeSpan.FromSeconds(offset);
-                    _expirationDictionary[key] = DateTime.Now.Add(timeSpan).Ticks;
+                    _expirationDictionary[key] = _timeProvider.Now.Add(timeSpan).Ticks;
                 }
                 else if (additionalArguments.TryGetValue("PX", out offsetObject))
                 {
                     var success = long.TryParse(offsetObject.ToString(), out var offset);
                     if (!success) return new ArgumentException("Invalid value for PX argument");
                     var timeSpan = TimeSpan.FromMilliseconds(offset);
-                    _expirationDictionary[key] = DateTime.Now.Add(timeSpan).Ticks;
+                    _expirationDictionary[key] = _timeProvider.Now.Add(timeSpan).Ticks;
                 }
                 else if (additionalArguments.TryGetValue("EXAT", out offsetObject))
                 {
                     var success = long.TryParse(offsetObject.ToString(), out var timestamp);
                     if (!success) return new ArgumentException("Invalid value for EXAT argument");
-                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(timestamp);
+                    DateTimeOffset dateTimeOffset = _timeProvider.FromUnixTimeSeconds(timestamp);
                     var dateTime = dateTimeOffset.LocalDateTime;
                     _expirationDictionary[key] = dateTime.Ticks;
                 }
@@ -52,7 +59,7 @@ public class RedisCommandProcessor : IProcessor
                 {
                     var success = long.TryParse(offsetObject.ToString(), out var timestamp);
                     if (!success) return new ArgumentException("Invalid value for PXAT argument");
-                    DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
+                    DateTimeOffset dateTimeOffset = _timeProvider.FromUnixTimeMilliseconds(timestamp);
                     var dateTime = dateTimeOffset.LocalDateTime;
                     _expirationDictionary[key] = dateTime.Ticks;
                 }
