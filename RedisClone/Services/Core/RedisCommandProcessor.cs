@@ -70,7 +70,7 @@ public class RedisCommandProcessor : IProcessor
                 key = (string)args[0];
                 if(_expirationDictionary.TryGetValue(key, out long expiration))
                 {
-                    if(DateTime.Now.Ticks > expiration)
+                    if(_timeProvider.Now.Ticks > expiration)
                     {
                         _dictionary.TryRemove(key, out _);
                         _expirationDictionary.TryRemove(key, out _);
