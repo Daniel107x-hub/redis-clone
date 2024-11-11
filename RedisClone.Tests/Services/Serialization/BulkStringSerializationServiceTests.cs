@@ -80,7 +80,7 @@ public class BulkStringSerializationServiceTests
     {
         BulkStringSerializationService service = new();
         byte[] result = service.Serialize(null);
-        Assert.Equal(Encoding.ASCII.GetBytes("-1\r\n"), result);
+        Assert.Equal(Encoding.ASCII.GetBytes("$-1\r\n"), result);
     }
     
     [Fact]
