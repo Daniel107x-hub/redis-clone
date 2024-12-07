@@ -80,6 +80,40 @@ public class RedisCommandProcessor : IProcessor
                 _dictionary.TryGetValue(key, out value);
                 return value;
             
+            case "EXISTS":
+                if(args.Count < 1) return new ArgumentException("EXISTS command requires AT LEAST 1 argument");
+                int count = 0;
+                for (int i = 0; i < args.Count; i++)
+                {
+                    key = (string)args[i];
+                    if(_dictionary.ContainsKey(key)) count++;
+                }
+
+                return count;
+            
+            case "DEL":
+                if(args.Count < 1) return new ArgumentException("DEL command requires AT LEAST 1 argument");
+                count = 0;
+                for(int i = 0; i < args.Count; i++)
+                {
+                    key = (string)args[i];
+                    if(_dictionary.TryRemove(key, out _))
+                    {
+                        _expirationDictionary.TryRemove(key, out _);
+                        count++;
+                    }
+                }
+                return count;
+            
+            case "INCR":
+                if(args.Count < 1) return new ArgumentException("INCR command requires AT LEAST 1 argument");
+                key = (string)args[0];
+                if (_dictionary.ContainsKey(key))
+                {
+                    
+                }
+                
+            
             default:
                 return null;
         }
