@@ -108,11 +108,28 @@ public class RedisCommandProcessor : IProcessor
             case "INCR":
                 if(args.Count < 1) return new ArgumentException("INCR command requires AT LEAST 1 argument");
                 key = (string)args[0];
-                if (_dictionary.ContainsKey(key))
+                if (!_dictionary.ContainsKey(key))
                 {
-                    
+                    _dictionary.TryAdd(key, "0");
+                    return 0;
                 }
-                
+                var result = int.TryParse(_dictionary[key].ToString(), out count);
+                if(!result) return new ArgumentException("Invalid value for INCR argument");
+                _dictionary[key] = (count++).ToString();
+                return count;
+            
+            case "DECR": 
+                if(args.Count < 1) return new ArgumentException("INCR command requires AT LEAST 1 argument");
+                key = (string)args[0];
+                if (!_dictionary.ContainsKey(key))
+                {
+                    _dictionary.TryAdd(key, "0");
+                    return 0;
+                }
+                result = int.TryParse(_dictionary[key].ToString(), out count);
+                if(!result) return new ArgumentException("Invalid value for DECR argument");
+                _dictionary[key] = (count--).ToString();
+                return count;
             
             default:
                 return null;
